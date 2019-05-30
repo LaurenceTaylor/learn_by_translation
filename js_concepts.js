@@ -2,10 +2,12 @@
 // Operators
 //////////////////////////////////////////////////////
 
+// Looks fairly similar to Ruby (besides increment/ decrement)
+// *
+// **
+// /
 // +
 // -
-// *
-// /
 // %
 // ++ (increment)
 // -- (decrement)
@@ -27,13 +29,15 @@ num /= 5;
 // Booleans
 //////////////////////////////////////////////////////
 
-// Pretty much the same
+// Looks similar to Ruby
+
+// ==, ===, !=, !==, >, <, >=, <=
 
 //////////////////////////////////////////////////////
 // Conditionals
 //////////////////////////////////////////////////////
 
-time = 10
+var time = 10
 
 if (time < 10) {
   greeting = 'Good morning';
@@ -62,11 +66,12 @@ var added = addUp(1, 7);
 // Functions (instead of classes)
 //////////////////////////////////////////////////////
 
-// Constructor function
-// Note capital letter
+// Constructor function to create objects of 'type' Person
+// Note capital letter in function name
 function Person(first, last, age) {
-  this.firstName = first;  // this is the object that 'owns the code'
-  this.lastName = last;    // this when used in an object is the object itself
+  // add properties
+  this.firstName = first;  // 'this' is the object that 'owns the code'
+  this.lastName = last;    // 'this' when used in an object is the object itself
   this.age = age;
 
   // add a method
@@ -75,23 +80,30 @@ function Person(first, last, age) {
   };
 }
 
-// creating a new object of the 'type' Person
-dave = new Person('Dave', 'Smith', 25);
+// creating a new Person object
+var dave = new Person('Dave', 'Smith', 25);
 
 // can access the properties of that object
 dave.age;
 // > 25
 
-// can add new properties to a specific object
+// can access methods of that object
+dave.hello();
+// > 'Hello, my name is Dave'
+
+// can add new properties to a specific object (dave, not Person)
 dave.city = 'London';
 
-// can add new methods to an object
+// can add new methods to a specific object (dave, not Person)
 dave.sentence = function() {
   return 'This is ' + this.firstName + '. They live in ' + this.city;
 }
 
+dave.sentence();
+// > 'This is Dave. They live in London'
+
 // can add new properties/ methods to the object 'type' using prototype
-Person.prototype.nationality = 'English';
+Person.prototype.nationality = 'British';
 
 Person.prototype.fullName = function() {
   return this.firstName + ' ' + this.lastName;
@@ -103,15 +115,33 @@ dave.nationality;
 dave.fullName;
 // > 'Dave Smith'
 
+// New objects of the type Person will have this property
+var mo = new Person('Mo', 'Farah', 36);
+mo.nationality;
+// > 'British'
+
+// a way of adding multiple methods at once using prototype
+
+Person.prototype = {
+  eat: function(food) {
+    'Is eating ' + food
+  },
+
+  think: function() {
+    this.firstName + ' is thinking'
+  }
+}
+
 //////////////////////////////////////////////////////
 // Loops
 //////////////////////////////////////////////////////
 
 // While loops
-var i = 0;
+var i = 1;
 
 while (i <= 10) {
   console.log(i);
+  i++;
 }
 
 // For loops
@@ -124,7 +154,7 @@ for (i = 1; i <= 10; i++) {
 // Functions (instead of blocks)
 //////////////////////////////////////////////////////
 
-// forEach, comparable to .each iterator in Ruby for arrays
+// forEach, similar to .each iterator in Ruby
 var array = [1, 2, 3, 4, 5];
 
 array.forEach(function(element) {
@@ -134,3 +164,45 @@ array.forEach(function(element) {
 //////////////////////////////////////////////////////
 // Using arrays
 //////////////////////////////////////////////////////
+
+var array = [];
+
+array.push('Pomodoro');
+
+array[0] == 'Pomodoro';
+// > true
+
+// more array methods:
+// https://www.w3schools.com/jsref/jsref_obj_array.asp
+
+//////////////////////////////////////////////////////
+// Using dictionaries (instead of hashes)
+//////////////////////////////////////////////////////
+
+// new dictionary
+var dictionary = {
+  name: 'Dave',
+  'surname': 'Smith',
+  age: 25
+};
+
+// adding to dictionaries
+// can be dynamically named
+dictionary['city'] = 'London';
+
+// alt
+dictionary.nationality = 'British';
+
+//////////////////////////////////////////////////////
+// Printing
+//////////////////////////////////////////////////////
+
+console.log('Hello world');
+
+//////////////////////////////////////////////////////
+// String interpolation
+//////////////////////////////////////////////////////
+
+var y = 5;
+
+console.log('I have ' + y + ' cats');

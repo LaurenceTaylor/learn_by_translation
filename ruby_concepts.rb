@@ -153,7 +153,10 @@ arr2 = Array.new
 
 # Adding to arrays
 arr.push('Hello')
-arr << 'Hello'
+arr2 << 'Hello'
+
+arr[0] == 'Hello'
+# > true
 
 ######################################################
 # Using hashes
@@ -165,8 +168,8 @@ hash = { :name => 'John', :age => 27 }
 hash2 = Hash.new
 
 # Adding to hashes
-hash[:name] = 'John'
-hash[:age] = 27
+hash[:surname] = 'Smith'
+hash[:city] = 'London'
 
 ######################################################
 # Printing
@@ -183,5 +186,3 @@ print 'What up'
 y = 5
 
 p "I have #{y} cats"
-
-p "I have " + y.to_s + " cats"
