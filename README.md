@@ -7,3 +7,5 @@
 * Final step was to learn the equivalent concept/ piece of syntax in Javascript
 
 * Ruby syntax & concepts are in ruby_concepts.rb, Javascript concepts are in js_concepts.js
+
+* 09/07/19 update: doing the same process for Python
